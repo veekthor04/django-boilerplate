@@ -1,2 +1,2 @@
 # django-boilerplate
-This is a template for django project setup.
+This is a template to set up a Django project.
