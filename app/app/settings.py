@@ -146,7 +146,9 @@ REST_FRAMEWORK = {
          'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         
-    )
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20
 }
 
 # Custom Authentication login
@@ -189,4 +191,15 @@ SWAGGER_SETTINGS = {
    'LOGIN_URL': '/admin/login/',
    'LOGOUT_URL': '/admin/logout/',
    'DEFAULT_AUTO_SCHEMA_CLASS': 'core.utils.CustomAutoSchema'
+}
+
+# Cache settings
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': os.environ.get('REDIS_URL'),
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
 }
